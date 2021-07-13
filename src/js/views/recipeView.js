@@ -1,5 +1,4 @@
 import icons from 'url:../../img/icons.svg';
-import Fractional from 'fractional';
 
 import View from './view.js';
 console.log('hi');
