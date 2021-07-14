@@ -29,22 +29,24 @@ class PaginationView extends View {
               </svg>
               <span>Page ${currentPage - 1}</span>
             </button>`;
+    const allPagesMarkup = this._generateAllPagesMarkup(numPages);
+    console.log('Whats up');
 
     //Page 1, and more pages
     if (currentPage === 1 && numPages > 1) {
-      return nextPageMarkup;
+      return `${allPagesMarkup} \n ${nextPageMarkup}`;
     }
     //Page 1, only page
     if (currentPage === 1 && numPages === 1) {
-      return '';
+      return allPagesMarkup;
     }
     //Last page
     if (currentPage === numPages && numPages > 1) {
-      return prevPageMarkup;
+      return `${prevPageMarkup} \n ${allPagesMarkup}`;
     }
     //Other page
     if (currentPage < numPages) {
-      return `${prevPageMarkup} \n ${nextPageMarkup}`;
+      return `${prevPageMarkup} \n ${allPagesMarkup} \n ${nextPageMarkup}`;
     }
   }
 
@@ -59,6 +61,17 @@ class PaginationView extends View {
       const goToPage = +btn.dataset.goto;
       handler(goToPage);
     });
+  }
+
+  _generateAllPagesMarkup(numPages) {
+    const pageMarkupArr = [];
+    for (let i = 0; i < numPages; i++) {
+      pageMarkupArr.push(`<button class="btn--xsmall pagination__btn--prev">
+            <span>${i + 1}</span>
+          </button>`);
+    }
+    console.log(pageMarkupArr.join('\n'));
+    return pageMarkupArr.join('\n');
   }
 }
 

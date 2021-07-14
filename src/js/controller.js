@@ -169,6 +169,7 @@ const init = function () {
   recipeView.addHandlerUpdateServings(controlServings);
   recipeView.addHandlerAddBookmark(controlBookmark);
   addRecipeView.addHandlerUpload(controlAddRecipe);
+  console.log('Whats up');
 };
 
 init();
