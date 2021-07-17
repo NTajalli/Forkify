@@ -26,6 +26,15 @@
     &--next {
       float: right;
     }
+    &--middle {
+      display: inline-block;
+      text-align: center;
+      &--current {
+        font-size: 1.3rem;
+        display: inline-block;
+        color: $color-secondary;
+      }
+    }
   }
 }
 

@@ -109,6 +109,33 @@
   }
 }
 
+.btn--inlinetiny {
+  color: $color-primary;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: none;
+  background-color: $color-grey-light-1;
+  border-radius: 5rem;
+  cursor: pointer;
+  vertical-align: middle;
+
+  display: flex;
+  transition: all 0.2s;
+
+  span {
+    margin: auto;
+  }
+
+  &:hover {
+    color: $color-grad-2;
+    background-color: $color-grey-light-2;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
 .btn--round {
   background-image: $gradient;
   border-radius: 50%;
@@ -144,7 +171,7 @@
   border: none;
   background: none;
   cursor: pointer;
-
+  text-align: center;
   svg {
     height: 100%;
     width: 100%;

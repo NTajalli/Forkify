@@ -23,13 +23,13 @@ class PaginationView extends View {
             </button>`;
     const prevPageMarkup = `<button data-goto="${
       currentPage - 1
-    }" class="btn--inline pagination__btn--prev">
+    }" class="btn--inline pagination__btn--middle">
               <svg class="search__icon">
                 <use href="${icons}#icon-arrow-left"></use>
               </svg>
               <span>Page ${currentPage - 1}</span>
             </button>`;
-    const allPagesMarkup = this._generateAllPagesMarkup(numPages);
+    const allPagesMarkup = this._generateAllPagesMarkup(numPages, currentPage);
     console.log('Whats up');
 
     //Page 1, and more pages
@@ -56,19 +56,35 @@ class PaginationView extends View {
    */
   addHandlerClick(handler) {
     this._parentElement.addEventListener('click', function (e) {
-      const btn = e.target.closest('.btn--inline');
+      const btn =
+        e.target.closest('.pagination__btn--prev') ||
+        e.target.closest('.pagination__btn--next') ||
+        e.target.closest('.pagination__btn--middle');
       if (!btn) return;
       const goToPage = +btn.dataset.goto;
       handler(goToPage);
     });
   }
 
-  _generateAllPagesMarkup(numPages) {
+  _generateAllPagesMarkup(numPages, currentPage) {
     const pageMarkupArr = [];
-    for (let i = 0; i < numPages; i++) {
-      pageMarkupArr.push(`<button class="btn--xsmall pagination__btn--prev">
+    const startPage = function () {
+      if (numPages <= 5) return 0;
+      if (currentPage + 2 <= numPages && currentPage - 2 > 0)
+        return currentPage - 3;
+      if (currentPage + 2 > numPages) return numPages - 5;
+      return 0;
+    };
+    console.log(startPage());
+    for (let i = startPage(); i < numPages && i < startPage() + 5; i++) {
+      const markup = `<button data-goto="${
+        i + 1
+      }" class="btn--inlinetiny btn--tiny pagination__btn--middle${
+        i + 1 == currentPage ? '--current' : ''
+      }">
             <span>${i + 1}</span>
-          </button>`);
+          </button>`;
+      pageMarkupArr.push(markup);
     }
     console.log(pageMarkupArr.join('\n'));
     return pageMarkupArr.join('\n');

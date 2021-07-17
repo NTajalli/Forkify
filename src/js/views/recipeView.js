@@ -1,7 +1,6 @@
 import icons from 'url:../../img/icons.svg';
 
 import View from './view.js';
-console.log('Sup');
 
 class RecipeView extends View {
   _parentElement = document.querySelector('.recipe');

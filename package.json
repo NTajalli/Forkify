@@ -1,22 +1,28 @@
 {
   "name": "forkify",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Recipe App",
-  "default": "index.js",
+  "main": "index.js",
   "scripts": {
     "start": "parcel index.html",
     "build": "parcel build index.html --dist-dir ./dist"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NTajalli/Forkify.git"
+  },
   "author": "Noah Tajalli",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NTajalli/Forkify/issues"
+  },
+  "homepage": "https://github.com/NTajalli/Forkify#readme",
   "devDependencies": {
-    "@parcel/transformer-image": "^2.0.0-nightly.2387",
-    "@parcel/transformer-sass": "^2.0.0-nightly.765",
-    "parcel": "^2.0.0-nightly.763"
+    "@parcel/transformer-image": "^2.0.0-nightly.2393",
+    "@parcel/transformer-sass": "^2.0.0-nightly.771",
+    "parcel": "^2.0.0-nightly.769"
   },
   "dependencies": {
-    "core-js": "^3.15.2",
-    "regenerator-runtime": "^0.13.7",
     "sass": "^1.35.2"
   }
 }
